@@ -1,3 +1,6 @@
+# You will ignore .env file once it is created
+.env
+
 # Logs
 logs
 *.log
