@@ -15,9 +15,14 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
 });
-
+//throws an err if the connection is not made
 connection.connect((err) => {
   if (err) throw err;
+
+  //else let us know when it is connected
   console.log(`connected as id ${connection.threadId}`);
   connection.end();
 });
+
+//exports my connection to be used in our main js file when needed
+module.exports = connection;
