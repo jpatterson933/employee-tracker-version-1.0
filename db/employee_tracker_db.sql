@@ -1,22 +1,26 @@
-/*TIME FOR SOME PSOODOCODE!?!?!?
+DROP DATABASE IF EXISTS employee_DB;
+CREATE database employee_DB;
 
-We will create one database for each of the three tables.
+USE employee_DB;
 
-department              --this is the name of the table
-id INT PRIMARY KEY      --this will be the id associated with each department
-name VARCHAR(30)        --this will be the departments name
+CREATE TABLE department (
+    id INT PRIMARY KEY,
+    name VARCHAR(30)
+);
 
-role        --this is the title of the table
-id INT PRIMARY KEY      --the id associated with each object
-title VARCHAR(30)       --this will hold the role title
-salary DECIMAL          --this will hold our salary
-department_id INT       --this will hold the reference to the department the role belongs to
+CREATE TABLE emp_role (
+    id INT PRIMARY KEY,      
+    title VARCHAR(30),       
+    salary DECIMAL,          
+    department_id INT, 
+);
 
-employee            --this is the name of the table
-id INT PRIMARY KEY  --id associated with each employee
-first_name VARCHAR(30)          --this will hold the employees first name
-last_name VARCHAR(30)           --this will hold the employees last name
-role_id INT                     --this will hold the reference to the role the employee has
-manager_id INT                  --this will hold the reference to another employee that manages the employee being created
-                                    --manager_id may be null if the employee has no manager
-*/
+CREATE TABLE employee (
+    id INT PRIMARY KEY        
+    first_name VARCHAR(30)    
+    last_name VARCHAR(30)     
+    role_id INT                
+    manager_id INT 
+);
+
+
