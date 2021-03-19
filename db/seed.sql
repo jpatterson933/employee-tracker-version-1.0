@@ -28,16 +28,16 @@ SELECT * FROM emp_role;
 SELECT * FROM employee;
 
 INSERT INTO department (id, name)
-VALUES (1, "Electronics"), (2, "Home and Office"), (3, "Gardening");
+VALUES (1, "Front of House"), (2, "Back of House"), (3, "Office");
 
 INSERT INTO emp_role (id, title, salary, department_id)
-VALUES (1, "Manager", 150000, 1), (2, "Sales Associate", 40000, 1);
+VALUES (1, "Manager", 150000, 1), (2, "Server", 60000, 1);
 
 INSERT INTO emp_role (id, title, salary, department_id)
-VALUES (3, "Manager", 100000, 2), (4, "Sales Associate", 30000, 2);
+VALUES (3, "Manager", 120000, 2), (4, "Bartender", 70000, 2);
 
 INSERT INTO emp_role (id, title, salary, department_id)
-VALUES (5, "Manager", 250000, 3), (6, "Sales Associate", 140000, 3);
+VALUES (5, "Manager", 250000, 3), (6, "Office Assistant", 40000, 3);
 
 INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
 VALUES (1, "Jay", "Patt", 1, 1), (2, "Pat", "O'Reilee", 2, NULL);
