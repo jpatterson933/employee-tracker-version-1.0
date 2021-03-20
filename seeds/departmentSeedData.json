@@ -1,14 +1,11 @@
 [
     {
-        "department_name": "Office",
-        "department_id": 1
+        "department_name": "Office"
     },
     {
-        "department_name": "Front of House",
-        "department_id": 2
+        "department_name": "Front of House"
     },
     {
-        "department_name": "Back of House",
-        "department_id": 3
+        "department_name": "Back of House"
     }
 ]

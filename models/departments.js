@@ -10,6 +10,12 @@ Department.init(
             type: DataTypes.STRING,
             unique: true,
         },
+        // department_id: {
+        //     type: DataTypes.INTEGER,
+        //     autoIncrement: true,
+        //     primaryKey: true,
+        //     allowNull: false
+        // }
     },
     {
         sequelize,
