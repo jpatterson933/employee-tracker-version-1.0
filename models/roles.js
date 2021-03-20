@@ -3,7 +3,7 @@ const { Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Role extends Model {}
-//establish basic connection here -- befre ad
+//establish basic connection here -- before ad
 Role.init(
     {
         title: {

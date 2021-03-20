@@ -1,5 +1,11 @@
 [
     {
         "department_name": "Office"
+    },
+    {
+        "department_name": "Front of House"
+    },
+    {
+        "department_name": "Back of House"
     }
 ]
