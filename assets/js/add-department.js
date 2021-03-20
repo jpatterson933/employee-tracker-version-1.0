@@ -18,31 +18,7 @@ const inquirer = require('inquirer')
 const mysql = require('mysql');
 const connection = require('../../config/connection');
 
-//our function to add departments
-const createDept = () => {
-    inquirer.prompt([
-        {
-            type: "input",
-            message: "New department name:",
-            name: "department",
-            validate: checkInput => {
-                if (checkInput) {
-                    return true;
-                } else {
-                    console.log("Please enter a valid department name")
-                    return false;
-                }
-            }
-        },
-    ]).then(deptName => {
-        const newDept = `INSERT INTO department (department_name) VALUES ('${deptName.department}')`;
-        connection.query(newDept, (err) => {
-            if (err) throw err;
-            console.log("this worked")
-        })
-        mainMenu();
-    })
-}
+
 
 const mainMenu = () => {
     console.log('Main Menu');
@@ -83,7 +59,8 @@ const departmentMenu = () => {
         switch (deptMenuChoice.deptMenu) {
             case 'View Departments':
                 //need to create a new departments and add an exit function to that funciton
-                console.log("list of deparmtnets")
+                console.log("These are your departments")
+                viewAllDept();
             break;
             case 'Create New Department':
                 createDept();
@@ -95,4 +72,45 @@ const departmentMenu = () => {
         }
     })
 }
-module.exports = createDept
+
+const viewAllDept = () => {
+    const viewDept = 'SELECT department_name FROM department'
+    connection.query(viewDept, (err, departments) => {
+        if (err) throw err;
+        console.log(departments)
+        return;
+    })
+}
+
+//our function to add departments
+const createDept = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "New department name:",
+            name: "department",
+            validate: checkInput => {
+                if (checkInput) {
+                    return true;
+                } else {
+                    console.log("Please enter a valid department name")
+                    return false;
+                }
+            }
+        },
+    ]).then(deptName => {
+        const newDept = `INSERT INTO department (department_name) VALUES ('${deptName.department}')`;
+        connection.query(newDept, (err) => {
+            if (err) throw err;
+        })
+        //lets user know they have saved the department
+        console.log(`${deptName.department} has been saved inside the Departments folder!`)
+        mainMenu();
+    })
+}
+
+const deleteDept = () => {
+
+
+}
+module.exports = mainMenu

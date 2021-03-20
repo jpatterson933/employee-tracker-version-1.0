@@ -2,6 +2,10 @@
 
 const inquirer = require('inquirer');
 const connection = require('./config/connection');
-const createDept = require('./assets/js/add-department')
+const mainMenu = require('./assets/js/add-department');
 
-createDept()
+const startTrackingEmployees = () => {
+    
+}
+
+mainMenu()
