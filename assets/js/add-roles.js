@@ -9,12 +9,12 @@ The employee roles function will go as follows
         --the salary will get aved to that role
     --they will need to select a department from the departments they have made
         --once they pick a department for that role, the department_id will be assigned to that role
-    --they will then be asked if they would like to add another role
+    --they will then be asked if they would like to add another role -
         --if they choose yes, it will rerun the create a role funciotn
         --if they choose no, it will ask them if they would like to add an employee for that role
         if they choose no, it will console log(you have no employees if none exist)
             --then it will take them back to the main menue
-            
+        
 
     
     

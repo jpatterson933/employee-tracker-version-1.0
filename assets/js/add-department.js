@@ -13,3 +13,6 @@ The department funciton goes as follows
     once they create a role, the main menu will consistnely show create department, role, or add employee
         --it will run the corresponding function based off of user choice
 */
+
+const inquirer = require('inquirer')
+const mysql = require('mysql')
