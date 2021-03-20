@@ -1,3 +1,4 @@
+//importing data types allows for us to the the built in data types in sequelize
 const { Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -6,7 +7,7 @@ class Department extends Model {}
 Department.init(
     {
         department_name: {
-            type: DataTypes.STRING(30),
+            type: DataTypes.STRING,
         },
     },
     {
