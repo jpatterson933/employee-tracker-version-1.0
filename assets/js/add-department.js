@@ -15,4 +15,10 @@ The department funciton goes as follows
 */
 
 const inquirer = require('inquirer')
-const mysql = require('mysql')
+const mysql = require('mysql');
+const connection = require('../../config/connection');
+
+const addDepartments = () => {
+    console.log('testing console log');
+    connection.query('select *')
+}

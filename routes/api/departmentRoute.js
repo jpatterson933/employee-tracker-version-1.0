@@ -3,7 +3,7 @@ const router = require('express').Router();
 const Department = require('../../models/departments')
 
 
-// GET all users
+// GET all departments
 router.get('/', async (req, res) => {
   try {
     const userData = await Department.findAll();
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// CREATE a new user
+// CREATE a new department
 router.post('/', async (req, res) => {
   try {
     const userData = await Department.create(req.body);
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET one user
+// GET one department by id
 router.get('/:id', async (req, res) => {
   try {
     const userData = await Department.findByPk(req.params.id);
@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// UPDATE a user
+// UPDATE a department
 router.put('/:id', async (req, res) => {
   try {
     const userData = await Department.update(req.body, {
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE a user
+// DELETE a a department
 router.delete('/:id', async (req, res) => {
   try {
     const userData = await Department.destroy({
