@@ -78,12 +78,9 @@ const departmentMenu = () => {
     })
 }
 
-const viewAllDept = () => {
-    connection.query('SELECT * FROM department', (err, res, fields) => {
-      if (err) throw err;
-      console.log(res[0]);
-      console.log('this did not work')
-    });
+const viewAllDept = async () => {
+  const test = await connection.query('SELECT * FROM department');
+  console.log(test)
   };
   
 
