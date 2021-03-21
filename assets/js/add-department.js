@@ -17,6 +17,7 @@ The department funciton goes as follows
 const inquirer = require('inquirer')
 const mysql = require('mysql');
 const connection = require('../../config/connection');
+const { Department, Role, Employee } = require('../../models')
 
 
 
@@ -47,18 +48,19 @@ const mainMenu = () => {
 
 }
 
+//create our department menue here
 const departmentMenu = () => {
     inquirer.prompt([
         {
             type: 'list',
             message: 'Department Menu',
             name: 'deptMenu',
-            choices: ['View Departments', 'Create New Department', 'Delete Department']
+            choices: ['View Departments', 'Create New Department', 'Delete Department', 'Exit']
         }
     ]).then(deptMenuChoice => {
         switch (deptMenuChoice.deptMenu) {
             case 'View Departments':
-                //need to create a new departments and add an exit function to that funciton
+
                 console.log("These are your departments")
                 viewAllDept();
             break;
@@ -69,21 +71,25 @@ const departmentMenu = () => {
                 //need to createa delete department function
                 console.log('delete departments')
             break;
+            case 'Exit':
+                mainMenu();
+            break;
         }
     })
 }
 
 const viewAllDept = () => {
-    const viewDept = 'SELECT department_name FROM department'
-    connection.query(viewDept, (err, departments) => {
-        if (err) throw err;
-        console.log(departments)
-        return;
-    })
-}
+    connection.query('SELECT * FROM department', (err, res, fields) => {
+      if (err) throw err;
+      console.log(res[0]);
+      console.log('this did not work')
+    });
+  };
+  
 
 //our function to add departments
 const createDept = () => {
+    console.log('creating new department...\n')
     inquirer.prompt([
         {
             type: "input",
@@ -100,11 +106,16 @@ const createDept = () => {
         },
     ]).then(deptName => {
         const newDept = `INSERT INTO department (department_name) VALUES ('${deptName.department}')`;
-        connection.query(newDept, (err) => {
+        connection.query(newDept,
+            {
+                department_name: `${deptName.department}`
+            },
+            
+            (err, res) => {
             if (err) throw err;
+            console.log(`${res.affectedRows} product inserted \n`)
         })
-        //lets user know they have saved the department
-        console.log(`${deptName.department} has been saved inside the Departments folder!`)
+        //calls main menu after department has been inserted
         mainMenu();
     })
 }

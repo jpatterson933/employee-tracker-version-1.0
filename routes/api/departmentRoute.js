@@ -6,8 +6,8 @@ const Department = require('../../models/departments')
 // GET all departments
 router.get('/', async (req, res) => {
   try {
-    const userData = await Department.findAll();
-    res.status(200).json(userData);
+    const deptData = await Department.findAll();
+    res.status(200).json(deptData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -16,8 +16,11 @@ router.get('/', async (req, res) => {
 // CREATE a new department
 router.post('/', async (req, res) => {
   try {
-    const userData = await Department.create(req.body);
-    res.status(200).json(userData);
+    const deptData = await Department.create({
+      department_name: req.body.department_name,
+      department_id: req.body.department_id
+    });
+    res.status(200).json(deptData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -26,12 +29,12 @@ router.post('/', async (req, res) => {
 // GET one department by id
 router.get('/:id', async (req, res) => {
   try {
-    const userData = await Department.findByPk(req.params.id);
-    if (!userData) {
-      res.status(404).json({ message: 'No user with this id!' });
+    const deptData = await Department.findByPk(req.params.id);
+    if (!deptData) {
+      res.status(404).json({ message: 'No dept with this id!' });
       return;
     }
-    res.status(200).json(userData);
+    res.status(200).json(deptData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -40,16 +43,16 @@ router.get('/:id', async (req, res) => {
 // UPDATE a department
 router.put('/:id', async (req, res) => {
   try {
-    const userData = await Department.update(req.body, {
+    const deptData = await Department.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
-    if (!userData[0]) {
-      res.status(404).json({ message: 'No user with this id!' });
+    if (!deptData[0]) {
+      res.status(404).json({ message: 'No dept with this id!' });
       return;
     }
-    res.status(200).json(userData);
+    res.status(200).json(deptData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -58,16 +61,16 @@ router.put('/:id', async (req, res) => {
 // DELETE a a department
 router.delete('/:id', async (req, res) => {
   try {
-    const userData = await Department.destroy({
+    const deptData = await Department.destroy({
       where: {
         id: req.params.id,
       },
     });
-    if (!userData) {
-      res.status(404).json({ message: 'No user with this id!' });
+    if (!deptData) {
+      res.status(404).json({ message: 'No dept with this id!' });
       return;
     }
-    res.status(200).json(userData);
+    res.status(200).json(deptData);
   } catch (err) {
     res.status(500).json(err);
   }
